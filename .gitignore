@@ -1,0 +1,7 @@
+# игнорировать все файлы в каталоге app/
+app/
+node_modules/
+.babelrc
+portOld.zip
+portfolioWebpack.zip
+public

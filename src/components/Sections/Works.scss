@@ -1,0 +1,129 @@
+@import "../../style/vars.scss";
+
+.portfolio {
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  grid-template-columns: 5% 90% 5%;
+
+  &-title {
+    grid-area: 1 / 2 / 2 / 3;
+  }
+  &-filter{
+    grid-area: 2 / 2 / 3 / 3;
+    justify-self: center;
+  }
+  .filter-btn.active{
+    background-color: transparent;
+    color: $colorSecond;
+  }
+  .filter-btn{
+    padding: 10px;
+    width: 150px;
+    background-color: $colorPrimary;
+    color: $colorBlack;
+    font-weight: 700;
+    border: 2px solid $colorPrimary;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .filter-btn:not(:first-child){
+    margin-left: 25px;
+  }
+  &-content {
+    grid-area: 3 / 2 / 4 / 3;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 49% 49%;
+    grid-gap: 2%;
+
+    &__text {
+      padding: 15px;
+      z-index: 4;
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      color: $colorSecond;
+
+      &-title {
+        font-size: 1rem;
+        color: $colorPrimary;
+        margin-bottom: 10px;
+      }
+
+      &-description {
+        font-size: 0.8rem;
+      }
+
+      &-links {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem;
+      }
+
+      &-link {
+        letter-spacing: 1.3px;
+        color: $colorPrimary;
+      }
+    }
+  }
+  &__card.active{
+    opacity: 1;
+    display: block;
+  }
+  .overlayFilter.active{
+    z-index: 5;
+    animation: portfolioFilterAnimate 1.2s steps(50, end) normal;
+    background: black;
+  }
+  .overlayFilter{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  &__card {
+    display: none;
+    opacity: 0;
+    grid-area: auto;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    transition: opacity 0.8s ease;
+    &-img{
+      position: relative;
+      width: 100%;
+      object-fit:cover;
+    }
+  }
+
+  &__card:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  &__card:hover:after {
+    background: rgba(0, 0, 0, 0.9);
+  }
+
+  &__card:hover .portfolio-content__text {
+    opacity: 0.8;
+    visibility: visible;
+    transition: $transitionStandard;
+  }
+
+}

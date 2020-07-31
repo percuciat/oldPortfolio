@@ -1,0 +1,79 @@
+
+// Preloader
+$widthPre: 20px;
+$heightPre: 20px;
+$distance: 10px;
+$speed: 2s;
+$typeAnimation: linear;
+$iterationAnimation: infinite;
+
+$color-4: #eead68;
+$color-3: #eec368;
+$color-2: coral;
+$color-1: orange;
+$color-5: #ee8c68;
+
+$color: $color-1, $color-2, $color-3, $color-4, $color-5;
+
+.preloader.active{
+  opacity: 1;
+  display: flex;
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  50%,
+  75% {
+    transform: scale(2.5);
+  }
+  78%, 100% {
+    opacity: 0;
+  }
+}
+
+.preloader {
+  position: absolute;
+  display:none;
+  opacity: 0;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  animation-delay: 1s;
+  background-color: black;
+  justify-content: center;
+  align-items: center;
+}
+
+
+@for $i from 1 through 5 {
+  .item-#{$i} {
+    width: $widthPre;
+    height: $heightPre;
+    border-radius: 50%;
+    animation: scale;
+    background-color: nth($color, $i);
+    margin: $distance;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:before {
+      content: '';
+      width: $widthPre;
+      height: $heightPre;
+      border-radius: 50%;
+      background-color: nth($color, $i);
+      opacity: 0.7;
+      animation: scale $speed $iterationAnimation cubic-bezier(0, 0, 0.49, 1.02);
+      animation-delay: 200ms * $i;
+      transition: 0.5s all ease;
+      transform: scale(1);
+    }
+  }
+}

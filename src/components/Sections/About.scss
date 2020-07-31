@@ -1,0 +1,70 @@
+@import "../../style/vars.scss";
+
+.about{
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-template-columns: 5% 90% 5%;
+  &-title{
+    grid-area: 1 / 2 / 2 / 3;
+  }
+  &-wrapper{
+    grid-area: 2 / 2 / 3 / 3;
+  }
+  &-content{
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    &__text{
+      flex: 1 1 64%;
+    }
+  }
+  &-img{
+    flex: 1 1 36%;
+    padding: 0 2%;
+    align-self: center;
+    text-align: center;
+    &__link{
+      color: $colorPrimary;
+    }
+    figcaption{
+      margin-top: 15px;
+    }
+  }
+  &-img-picture{
+    max-width: 350px;
+    width: 100%;
+    border-radius: 15px;
+  }
+  &__subtitle{
+    margin-top: 20px;
+    font-size: 1.2rem;
+  }
+  &__skills{
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+  }
+  &__item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .fab{
+    font-size: 3rem;
+  }
+  .fa-html5{
+    color: #E44D27;
+  }
+  .fa-css3-alt{
+    color: #2264B0;
+  }
+  .fa-js{
+    color: #F7E01D;
+  }
+  .fa-wordpress{
+    color: #00759B;
+  }
+  &__item:not(:first-child){
+    margin-left: 80px;
+  }
+}

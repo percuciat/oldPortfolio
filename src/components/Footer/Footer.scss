@@ -1,0 +1,22 @@
+@import "../../style/vars.scss";
+
+.footer{
+  grid-area: 2 / 2 / 3 / 3;
+  color: white;
+  &__content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+  }
+  &__link{
+    margin-left: 15px;
+    font-size: 1rem;
+    color: $colorPrimary;
+    cursor: pointer;
+    transition: $transitionColor;
+  }
+  &__link:hover{
+    color: white;
+  }
+}

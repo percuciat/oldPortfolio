@@ -1,0 +1,134 @@
+@import "../../style/vars.scss";
+
+
+.header{
+  z-index: 5;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 75px;
+  &__wrapper{
+    z-index: 99;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgb(0,0,0);
+  }
+  &__logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 2;
+    &-img{
+      width: calc(45px + 1 * (100vw / 85));
+    }
+  }
+  &__nav{
+    flex-grow: 2;
+    .nav{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-item {
+      padding: 15px;
+      position: relative;
+      color: $colorPrimary;
+      font-size: 1.65rem;
+    }
+    .nav-item:hover .header__navText{
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  &__navText{
+    position: absolute;
+    width: 120px;
+    right: -140px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 5px;
+    font-size: 16px;
+    display: block;
+    text-align: center;
+    background-color: $colorPrimary;
+    border-radius: 10px;
+    cursor: pointer;
+    color: $colorBlack;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease-in;
+  }
+  &__navText:before{
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: -12px;
+    transform: translateY(-50%) rotate(90deg);
+    display: block;
+    border: 7px solid transparent;
+    border-top: 7px solid $colorPrimary;
+  }
+}
+.nav-mobile{
+  position: relative;
+  margin-top: 10px;
+  margin-right: 5%;
+  display: none;
+  height: 45px;
+  width: 45px;
+  background: transparent;
+  border: none;
+  outline: none;
+  &__item{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 45px;
+    height: 5px;
+    background: $colorPrimary;
+    border-radius: 10px;
+  }
+  &__item:before,
+  &__item:after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    width: 45px;
+    height: 5px;
+    background: $colorPrimary;
+    border-radius: 10px;
+  }
+  &__item:before{
+    top: 20px;
+  }
+  &__item:after{
+    bottom: 20px;
+  }
+}
+.nav-mobile.active{
+  .nav-mobile__item{
+    transition: all 0.8s ease;
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+  .nav-mobile__item:before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 45px;
+    height: 5px;
+    background: $colorPrimary;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    border-radius: 10px;
+  }
+  .nav-mobile__item:after{
+    opacity: 0;
+  }
+}
+
